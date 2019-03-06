@@ -1,0 +1,2 @@
+# storeManager-react
+react-storeManager
