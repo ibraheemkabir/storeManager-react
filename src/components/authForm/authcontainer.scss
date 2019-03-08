@@ -6,7 +6,7 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
   .ui.form {
-    width: 35%;
+    width: 30rem;
     padding: 5rem;
     margin: 0 auto;
     background-color: #0000008a;
@@ -41,12 +41,14 @@
     border-radius: 0;
     background: transparent;
     border: 0;
+    border-radius: 0;
     outline: 0;
     border-bottom: 1px solid #45494c;
     font-size: 14px;
     color: #959595;
     padding: 8px 0;
     margin-top: 20px;
+    letter-spacing: 0.3rem;
   }
 
   .ui.button {
@@ -58,16 +60,25 @@
     color: #fff;
     cursor: pointer;
     text-align: center;
+    margin-top: 2em;
     margin-bottom: 1rem;
   }
 
   .shadow {
     background-color: #2b2929a1;
     height: 100%;
-    padding: 6rem;
+    padding-top: 13%;
   }
-  span {
+  .forgot {
     margin: 0 0 0 auto;
     color: white;
+  }
+
+  .ui.form .field .ui.input input,
+  .ui.form .fields .field .ui.input input {
+    width: auto;
+    color: white;
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
   }
 }

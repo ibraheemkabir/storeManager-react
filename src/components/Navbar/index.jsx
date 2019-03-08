@@ -9,7 +9,6 @@ export default class MenuExampleSizeMini extends Component {
 
   render() {
     const { activeItem } = this.state;
-
     return (
       <Menu className="navbar" stackable size="large">
         <Menu.Item />

@@ -8,7 +8,6 @@ import './body.scss';
 const App = () => (
   <Router>
     <React.Fragment>
-      <Navbar />
       <div className="body">
         <Switch>
           {routes.map(route => (
@@ -21,7 +20,6 @@ const App = () => (
           ))}
         </Switch>
       </div>
-      <Footer />
     </React.Fragment>
   </Router>
 );

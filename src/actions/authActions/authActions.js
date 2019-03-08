@@ -48,7 +48,7 @@ export const userLogin = user => async (dispatch) => {
   try {
     dispatch(triggerLoading(AUTH_LOADING));
     const response = await loginCall(user);
-    setToken(response.data.loginToken);
+    setToken(response.data.token);
     dispatch(loginSuccess(response));
     toast.success(response.data.message);
   } catch (error) {

@@ -1,13 +1,19 @@
 import axios from 'axios';
-import { API_BASE_URL } from '../constants';
+import { API_BASE_URL } from '../../constants';
 
 const signupCall = async (user) => {
-  const response = await axios.post(`${API_BASE_URL}/auth/signup`, user);
+  const response = await axios.post(
+    'https://store-maneger.herokuapp.com/api/v1/users/auth/signup',
+    user
+  );
   return response;
 };
 
 const loginCall = async (user) => {
-  const response = await axios.post(`${API_BASE_URL}/auth/signin`, user);
+  const response = await axios.post(
+    'https://store-maneger.herokuapp.com/api/v1/users/auth/signin',
+    user
+  );
   return response;
 };
 
