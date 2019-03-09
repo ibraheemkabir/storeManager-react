@@ -36,12 +36,17 @@
     padding-top: 2re;
     border-color: #b21e1e !important;
   }
+  .ui.statistic > .text.value,
+  .ui.statistics .statistic > .text.value {
+    font-size: 3.5rem !important;
+    min-height: 1em;
+  }
 }
 
 .ui.grid.productslist {
   justify-content: center;
   width: 90%;
-  margin: 0 auto;
+  margin: 3rem auto;
   .ui.cards > .card {
     display: flex;
     margin: 0.875em 0.5em;
@@ -90,5 +95,54 @@
     margin: 0 auto 0 0;
     text-align: left;
     float: left;
+  }
+}
+.product {
+  .ui.card:first-child {
+    margin-top: auto;
+  }
+
+  .ui.card {
+    width: 30%;
+    margin: 1rem;
+  }
+
+  span.date {
+    padding: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .header:not(.ui),
+  .ui.cards > .card > .content > .header:not(.ui) {
+    font-weight: 400;
+    font-size: 1.08571429em;
+    margin-top: -0.21425em;
+    line-height: 1.28571429em;
+  }
+
+  .ui.card > .content > .header:not(.ui),
+  .ui.cards > .card > .content > .header:not(.ui) {
+    font-weight: 600;
+    font-size: 0.98571429em;
+    margin: 1em auto;
+    margin-top: -0.21425em;
+    line-height: 1.28571429em;
+    text-align: center;
+  }
+}
+
+.ui.grid.productslist .ui.tag.label.new {
+  padding: 0.99em 0.833em;
+  &:before {
+    position: absolute;
+    transform: none;
+    top: -0%;
+    right: 100%;
+    content: '';
+    background-color: inherit;
+    background-image: none;
+    width: 1.56em;
+    height: 2.92em;
+    transition: none;
   }
 }

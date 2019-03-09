@@ -1,17 +1,16 @@
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Image, List, Label } from 'semantic-ui-react';
 import foot from '../../../../assets/images/foot.jpg';
 import './dashcomponents.scss';
-import { fetchproducts } from '../../../actions/productActions/productActions';
+import { fetchSales } from '../../../actions/productActions/productActions';
 import { dateFormatter } from '../../../helpers/articleInfoFormatter';
-import { timingSafeEqual } from 'crypto';
 
 class recentProducts extends Component {
   componentWillMount() {
-    const { fetchproducts } = this.props;
-    fetchproducts();
+    const { fetchSales } = this.props;
+    fetchSales();
   }
 
   render() {
@@ -88,11 +87,11 @@ class recentProducts extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.productsReducer.response
+  products: state.salesReducer.response
 });
 
 export { recentProducts as Products };
 export default connect(
   mapStateToProps,
-  { fetchproducts }
+  { fetchSales }
 )(recentProducts);
