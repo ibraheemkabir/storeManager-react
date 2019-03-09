@@ -3,5 +3,7 @@
 exports[`App should match snapshot 1`] = `
 <div
   className="home"
-/>
+>
+  hello
+</div>
 `;

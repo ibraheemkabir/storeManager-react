@@ -7,6 +7,33 @@ export default class MenuExampleSizeMini extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
+  renderDropdownMenu() {
+    const { avatarUrl, userId } = this.props;
+    return (
+      <Menu.Item>
+        <Dropdown
+          pointing
+          simple
+          item
+          className="link item"
+          trigger={<Image src={avatarUrl || avatarPlaceholder} avatar className="avatarImg" />}
+        >
+          <Dropdown.Menu className="right">
+            <Dropdown.Item as="a" href={`/profile/${userId || getUserIdFromLocalStorage()}`}>
+              Settings
+            </Dropdown.Item>
+            <Dropdown.Item as="a" href={`/bookmarks/${userId || getUserIdFromLocalStorage()}`}>
+              Attendants
+            </Dropdown.Item>
+            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+              LOG OUT
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Menu.Item>
+    );
+  }
+
   render() {
     const { activeItem } = this.state;
     return (
@@ -18,19 +45,28 @@ export default class MenuExampleSizeMini extends Component {
           active={activeItem === 'features'}
           onClick={this.handleItemClick}
         >
-          Features
+          signIn
         </Menu.Item>
-
         <Menu.Item
           name="testimonials"
           active={activeItem === 'testimonials'}
           onClick={this.handleItemClick}
         >
-          Testimonials
+          Categories
         </Menu.Item>
-
-        <Menu.Item name="sign-in" active={activeItem === 'sign-in'} onClick={this.handleItemClick}>
-          Sign-in
+        <Menu.Item
+          name="testimonials"
+          active={activeItem === 'testimonials'}
+          onClick={this.handleItemClick}
+        >
+          Products
+        </Menu.Item>
+        <Menu.Item
+          name="testimonials"
+          active={activeItem === 'testimonials'}
+          onClick={this.handleItemClick}
+        >
+          Cart
         </Menu.Item>
       </Menu>
     );

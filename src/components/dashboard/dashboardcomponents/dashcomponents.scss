@@ -1,0 +1,94 @@
+.stats {
+  padding: 5rem;
+  margin-top: 2rem;
+  .ui.statistics {
+    display: flex;
+    padding: 4rem;
+    margin: 0 auto;
+    width: 98%;
+    border-bottom-style: solid;
+    border-bottom-width: 0.01rem;
+    margin-top: -2rem;
+  }
+
+  .ui.statistics > .statistic {
+    display: inline-flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: auto;
+  }
+
+  .ui.statistic + .ui.statistic {
+    margin: auto;
+  }
+
+  .ui.statistic:last-child {
+    margin-right: 0;
+    border-right-style: none;
+  }
+
+  .ui.red.ribbon.label {
+    width: 15%;
+    margin-top: 0.5rem;
+    text-align: center;
+    padding: 1rem;
+    padding-top: 2re;
+    border-color: #b21e1e !important;
+  }
+}
+
+.ui.grid.productslist {
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  .ui.cards > .card {
+    display: flex;
+    margin: 0.875em 0.5em;
+    float: none;
+    justify-content: center;
+  }
+
+  .ui.card > .extra,
+  .ui.cards > .card > .extra {
+    padding: 0;
+  }
+
+  .ui.grid > .row > .column {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .ui.small.image {
+    width: 55%;
+    height: 100%;
+  }
+
+  .products {
+    display: flex;
+    span {
+      padding: 1rem;
+      padding-top: 0;
+    }
+
+    .ui.list .list > .item .description,
+    .ui.list > .item .description {
+      padding-top: 0.2rem;
+      display: block;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .ui.list .list > .item > .content,
+    .ui.list > .item > .content {
+      line-height: 1.14285714em;
+      padding: 1rem;
+      padding-bottom: 0;
+    }
+  }
+  .ui.tag.label {
+    margin: 0 auto 0 0;
+    text-align: left;
+    float: left;
+  }
+}
