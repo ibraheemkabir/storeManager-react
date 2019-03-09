@@ -1,7 +1,10 @@
 import jwtDecode from 'jwt-decode';
-import { authentication } from '../constants';
+import { authentication, role } from '../constants';
 
-const setToken = token => localStorage.setItem(authentication, token);
+const setToken = (token, roleId) => {
+  localStorage.setItem(authentication, token);
+  localStorage.setItem(role, roleId);
+};
 
 const getUserIdFromLocalStorage = () => {
   const token = localStorage.getItem(authentication);
@@ -33,7 +36,7 @@ const isUserAuthenticated = () => {
 const getToken = localStorage.getItem(authentication);
 
 const config = {
-  headers: { Authorization: getToken }
+  headers: { token: getToken }
 };
 
 export { setToken, getToken, config, getUserIdFromLocalStorage, isUserAuthenticated };

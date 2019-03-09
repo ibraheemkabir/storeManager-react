@@ -5,6 +5,11 @@ const initialState = {
     response: '',
     isAuthenticated: null
   },
+  allProducts: {
+    productsIsLoading: false,
+    success: false,
+    response: '',
+  },
 };
 
 export default initialState;

@@ -48,7 +48,8 @@ export const userLogin = user => async (dispatch) => {
   try {
     dispatch(triggerLoading(AUTH_LOADING));
     const response = await loginCall(user);
-    setToken(response.data.token);
+    console.log(response.data.priviledge);
+    setToken(response.data.token, response.data.priviledge, response.data.userId);
     dispatch(loginSuccess(response));
     toast.success(response.data.message);
   } catch (error) {
@@ -59,14 +60,5 @@ export const userLogin = user => async (dispatch) => {
       dispatch(networkError(networkErrorResponse));
       toast.warn(networkErrorResponse);
     }
-  }
-};
-
-export const accountActivation = (response, token) => (dispatch) => {
-  if (token) {
-    setToken(token);
-    dispatch(loginSuccess(response));
-  } else {
-    dispatch(loginFailure(response));
   }
 };
