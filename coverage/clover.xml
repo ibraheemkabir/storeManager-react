@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1552223052467" clover="3.2.0">
-  <project timestamp="1552223052467" name="All files">
+<coverage generated="1552224473031" clover="3.2.0">
+  <project timestamp="1552224473032" name="All files">
     <metrics statements="106" coveredstatements="80" conditionals="16" coveredconditionals="9" methods="17" coveredmethods="12" elements="139" coveredelements="101" complexity="0" loc="106" ncloc="106" packages="8" files="12" classes="12"/>
     <package name="mockData">
       <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -71,7 +71,7 @@
         <metrics statements="25" coveredstatements="20" conditionals="4" coveredconditionals="2" methods="8" coveredmethods="8"/>
         <line num="14" count="1" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
         <line num="26" count="2" type="stmt"/>
         <line num="27" count="2" type="stmt"/>
         <line num="28" count="2" type="stmt"/>
@@ -83,7 +83,7 @@
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="43" count="2" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
