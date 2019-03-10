@@ -15,6 +15,11 @@ const initialState = {
     success: false,
     response: '',
   },
+  checkoutProducts: {
+    ProductsIsLoading: false,
+    success: false,
+    response: '',
+  },
 };
 
 export default initialState;
