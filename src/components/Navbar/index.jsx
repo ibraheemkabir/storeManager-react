@@ -1,13 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown } from 'semantic-ui-react';
+import 'react-toastify/dist/ReactToastify.css';
+import { Menu, Dropdown, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import './navbar.scss';
 
 class Navbar extends Component {
-  state = { activeItem: 'home' };
+  state = {
+    activeItem: 'home',
+    cart: this.props.cart
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.cart !== prevProps.cart) {
+      console.log('hello');
+      this.updateCart(JSON.parse(localStorage.getItem('cart')).length);
+    }
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  updateCart(cart) {
+    console.log('helo');
+
+    this.setState({
+      cart
+    });
+  }
 
   renderDropdownMenu() {
     const role = localStorage.getItem('role');
@@ -40,49 +60,54 @@ class Navbar extends Component {
     const role = localStorage.getItem('role');
     const { activeItem } = this.state;
     return (
-      <Menu className="navbar" stackable size="mini">
-        {role === '1' ? (
+      <Fragment className="menu">
+        <ToastContainer autoClose={5000} />
+        <Menu className="navbar" stackable size="mini">
+          {role === '1' ? (
+            <Menu.Item
+              name="testimonials"
+              active={activeItem === 'testimonials'}
+              onClick={this.handleItemClick}
+            >
+              Categories
+            </Menu.Item>
+          ) : null}
           <Menu.Item
             name="testimonials"
             active={activeItem === 'testimonials'}
             onClick={this.handleItemClick}
           >
-            Categories
+            Products Available
           </Menu.Item>
-        ) : null}
-        <Menu.Item
-          name="testimonials"
-          active={activeItem === 'testimonials'}
-          onClick={this.handleItemClick}
-        >
-          Products Available
-        </Menu.Item>
 
-        <Menu.Item
-          name="testimonials"
-          active={activeItem === 'testimonials'}
-          onClick={this.handleItemClick}
-        >
-          <Link replace={false} to="/cart">
-            Cart
-          </Link>
-        </Menu.Item>
+          <Menu.Item
+            name="testimonials"
+            active={activeItem === 'testimonials'}
+            onClick={this.handleItemClick}
+          >
+            <Link replace={false} to="/cart">
+              <Label color="teal" floating>
+                {this.state.cart}
+              </Label>
+              Cart
+            </Link>
+          </Menu.Item>
 
-        <Menu.Item
-          name="testimonials"
-          active={activeItem === 'testimonials'}
-          onClick={this.handleItemClick}
-        >
-          {this.renderDropdownMenu()}
-        </Menu.Item>
-      </Menu>
+          <Menu.Item
+            name="testimonials"
+            active={activeItem === 'testimonials'}
+            onClick={this.handleItemClick}
+          >
+            {this.renderDropdownMenu()}
+          </Menu.Item>
+        </Menu>
+      </Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const { authReducer } = state;
-  const { isAuthenticated } = authReducer;
-};
+const mapStateToProps = state => ({
+  cart: JSON.parse(localStorage.getItem('cart')).length
+});
 
 export default connect(mapStateToProps)(Navbar);
