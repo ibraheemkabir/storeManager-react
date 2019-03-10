@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Dropdown } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import './navbar.scss';
 
-export default class MenuExampleSizeMini extends Component {
+class Navbar extends Component {
   state = { activeItem: 'home' };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   renderDropdownMenu() {
-    const { avatarUrl, userId } = this.props;
+    const role = localStorage.getItem('role');
     return (
       <Menu.Item>
-        <Dropdown
-          pointing
-          simple
-          item
-          className="link item"
-          trigger={<Image src={avatarUrl || avatarPlaceholder} avatar className="avatarImg" />}
-        >
+        <Dropdown pointing simple item className="link item" trigger={<div>hello</div>}>
           <Dropdown.Menu className="right">
-            <Dropdown.Item as="a" href={`/profile/${userId || getUserIdFromLocalStorage()}`}>
-              Settings
+            {role === '1' ? (
+              <div>
+                <Dropdown.Item as="a">ATTENDANTS</Dropdown.Item>
+                <Dropdown.Item as="a">SETTINGS</Dropdown.Item>
+              </div>
+            ) : null}
+            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+              MY PROFILE
             </Dropdown.Item>
-            <Dropdown.Item as="a" href={`/bookmarks/${userId || getUserIdFromLocalStorage()}`}>
-              Attendants
+            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+              SALES RECORDS
             </Dropdown.Item>
             <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
               LOG OUT
@@ -35,31 +36,25 @@ export default class MenuExampleSizeMini extends Component {
   }
 
   render() {
+    const role = localStorage.getItem('role');
     const { activeItem } = this.state;
     return (
-      <Menu className="navbar" stackable size="large">
-        <Menu.Item />
-
-        <Menu.Item
-          name="features"
-          active={activeItem === 'features'}
-          onClick={this.handleItemClick}
-        >
-          signIn
-        </Menu.Item>
-        <Menu.Item
-          name="testimonials"
-          active={activeItem === 'testimonials'}
-          onClick={this.handleItemClick}
-        >
-          Categories
-        </Menu.Item>
+      <Menu className="navbar" stackable size="mini">
+        {role === '1' ? (
+          <Menu.Item
+            name="testimonials"
+            active={activeItem === 'testimonials'}
+            onClick={this.handleItemClick}
+          >
+            Categories
+          </Menu.Item>
+        ) : null}
         <Menu.Item
           name="testimonials"
           active={activeItem === 'testimonials'}
           onClick={this.handleItemClick}
         >
-          Products
+          Products Available
         </Menu.Item>
         <Menu.Item
           name="testimonials"
@@ -68,7 +63,27 @@ export default class MenuExampleSizeMini extends Component {
         >
           Cart
         </Menu.Item>
+        <Menu.Item
+          name="testimonials"
+          active={activeItem === 'testimonials'}
+          onClick={this.handleItemClick}
+        >
+          {this.renderDropdownMenu()}
+        </Menu.Item>
       </Menu>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const { authReducer } = state;
+  const { isAuthenticated } = authReducer;
+  if (isAuthenticated) {
+    return role;
+  }
+  return {
+    userId: ''
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);
