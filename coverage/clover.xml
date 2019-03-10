@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <coverage generated="1552224473031" clover="3.2.0">
   <project timestamp="1552224473032" name="All files">
+=======
+<coverage generated="1552230132718" clover="3.2.0">
+  <project timestamp="1552230132718" name="All files">
+>>>>>>> test-update
     <metrics statements="106" coveredstatements="80" conditionals="16" coveredconditionals="9" methods="17" coveredmethods="12" elements="139" coveredelements="101" complexity="0" loc="106" ncloc="106" packages="8" files="12" classes="12"/>
     <package name="mockData">
       <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
