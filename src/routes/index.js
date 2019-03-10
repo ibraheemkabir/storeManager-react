@@ -2,6 +2,8 @@ import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
+import Products from '../pages/Products';
+import Cart from '../pages/Cart/index';
 
 export default [
   {
@@ -21,6 +23,18 @@ export default [
     component: Dashboard,
     exact: true,
     path: '/dashboard'
+  },
+  {
+    name: 'Products',
+    component: Products,
+    exact: true,
+    path: '/Products'
+  },
+  {
+    name: 'Cart',
+    component: Cart,
+    exact: true,
+    path: '/Cart'
   },
   {
     name: '404',
