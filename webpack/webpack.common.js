@@ -43,6 +43,19 @@ module.exports = {
         test: /\.(png|jpg)$/,
         include: path.join(__dirname, 'static/images'),
         loader: 'file-loader'
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              disable: true
+            }
+          }
+        ]
       }
     ]
   },
