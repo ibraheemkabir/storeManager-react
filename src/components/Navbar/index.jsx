@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import './navbar.scss';
@@ -56,13 +57,17 @@ class Navbar extends Component {
         >
           Products Available
         </Menu.Item>
+
         <Menu.Item
           name="testimonials"
           active={activeItem === 'testimonials'}
           onClick={this.handleItemClick}
         >
-          Cart
+          <Link replace={false} to="/cart">
+            Cart
+          </Link>
         </Menu.Item>
+
         <Menu.Item
           name="testimonials"
           active={activeItem === 'testimonials'}
@@ -78,12 +83,6 @@ class Navbar extends Component {
 const mapStateToProps = (state) => {
   const { authReducer } = state;
   const { isAuthenticated } = authReducer;
-  if (isAuthenticated) {
-    return role;
-  }
-  return {
-    userId: ''
-  };
 };
 
 export default connect(mapStateToProps)(Navbar);

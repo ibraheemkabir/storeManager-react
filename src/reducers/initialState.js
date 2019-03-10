@@ -10,6 +10,11 @@ const initialState = {
     success: false,
     response: '',
   },
+  allSales: {
+    SalesIsLoading: false,
+    success: false,
+    response: '',
+  },
 };
 
 export default initialState;

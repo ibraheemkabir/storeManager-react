@@ -17,7 +17,7 @@
       "./jest.setup.js"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|Png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
     },
     "snapshotSerializers": [
@@ -51,6 +51,7 @@
     "medium-editor": "^5.23.3",
     "mini-css-extract-plugin": "^0.5.0",
     "normalize.css": "^8.0.1",
+    "number-to-words": "^1.2.4",
     "password-revealer": "^1.1.1",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.16.4",
