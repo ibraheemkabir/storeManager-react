@@ -12,18 +12,9 @@ class Navbar extends Component {
     cart: this.props.cart
   };
 
-  componentDidUpdate(prevProps) {
-    if (this.props.cart !== prevProps.cart) {
-      console.log('hello');
-      this.updateCart(JSON.parse(localStorage.getItem('cart')).length);
-    }
-  }
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   updateCart(cart) {
-    console.log('helo');
-
     this.setState({
       cart
     });
@@ -62,14 +53,26 @@ class Navbar extends Component {
     return (
       <Fragment className="menu">
         <ToastContainer autoClose={5000} />
+
         <Menu className="navbar" stackable size="mini">
+          <Menu.Item
+            name="testimonials"
+            active={activeItem === 'testimonials'}
+            onClick={this.handleItemClick}
+          >
+            <Link replace={false} to="/dashboard">
+              My Dashboard
+            </Link>
+          </Menu.Item>
           {role === '1' ? (
             <Menu.Item
               name="testimonials"
               active={activeItem === 'testimonials'}
               onClick={this.handleItemClick}
             >
-              Categories
+              <Link replace={false} to="/categories">
+                Categories
+              </Link>
             </Menu.Item>
           ) : null}
           <Menu.Item
@@ -77,9 +80,10 @@ class Navbar extends Component {
             active={activeItem === 'testimonials'}
             onClick={this.handleItemClick}
           >
-            Products Available
+            <Link replace={false} to="/products">
+              Products Available
+            </Link>
           </Menu.Item>
-
           <Menu.Item
             name="testimonials"
             active={activeItem === 'testimonials'}
@@ -106,8 +110,11 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  cart: JSON.parse(localStorage.getItem('cart')).length
-});
+const mapStateToProps = () => {
+  if (JSON.parse(localStorage.getItem('cart'))) {
+    return { cart: JSON.parse(localStorage.getItem('cart')).length };
+  }
+  return { cart: 0 };
+};
 
 export default connect(mapStateToProps)(Navbar);

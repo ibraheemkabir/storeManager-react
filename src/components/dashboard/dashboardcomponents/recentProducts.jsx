@@ -1,4 +1,5 @@
 /* eslint-disable no-shadow */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Image, List, Label } from 'semantic-ui-react';
@@ -15,6 +16,7 @@ class recentProducts extends Component {
 
   render() {
     const { result } = this.props.products;
+
     return (
       <Grid columns={3} divided className="productslist">
         <Label as="a" color="red" tag>
@@ -22,64 +24,39 @@ class recentProducts extends Component {
         </Label>
         <Grid.Row>
           {result
-            ? result.map(Element => Element.sales.map(Elements => (
-              <Grid.Column key={Elements.id}>
-                <div className="products">
-                  <Image src={foot} size="small" />
-                  <span>
-                    <List>
-                      <List.Item>
-                        <List.Content>
-                          <List.Header as="a">Product Name</List.Header>
-                          <List.Description>{Elements.product}</List.Description>
-                        </List.Content>
-                        <List.Content>
-                          <List.Header as="a">Quantity Sold</List.Header>
-                          <List.Description>{Elements.quantity}</List.Description>
-                        </List.Content>
-                        <List.Content>
-                          <List.Header as="a">Sale Attendant Id</List.Header>
-                          <List.Description>{Elements.attendant}</List.Description>
-                        </List.Content>
-                        <List.Content>
-                          <List.Header as="a">Date Sold</List.Header>
-                          <List.Description>{dateFormatter(Elements.date)}</List.Description>
-                        </List.Content>
-                      </List.Item>
-                    </List>
-                  </span>
-                </div>
-              </Grid.Column>
-            ))
-            )
+            ? result.map((Element) => {
+              const results = Element.sales.splice(0, 6);
+              return results.map(Elements => (
+                <Grid.Column key={Elements.id}>
+                  <div className="products">
+                    <Image src={foot} size="small" />
+                    <span>
+                      <List>
+                        <List.Item>
+                          <List.Content>
+                            <List.Header as="a">Product Name</List.Header>
+                            <List.Description>{Elements.product}</List.Description>
+                          </List.Content>
+                          <List.Content>
+                            <List.Header as="a">Quantity Sold</List.Header>
+                            <List.Description>{Elements.quantity}</List.Description>
+                          </List.Content>
+                          <List.Content>
+                            <List.Header as="a">Sale Attendant Id</List.Header>
+                            <List.Description>{Elements.attendant}</List.Description>
+                          </List.Content>
+                          <List.Content>
+                            <List.Header as="a">Date Sold</List.Header>
+                            <List.Description>{dateFormatter(Elements.date)}</List.Description>
+                          </List.Content>
+                        </List.Item>
+                      </List>
+                    </span>
+                  </div>
+                </Grid.Column>
+              ));
+            })
             : null}
-          <Grid.Column>
-            <div className="products">
-              <Image src={foot} size="small" />
-              <span>
-                <List>
-                  <List.Item>
-                    <List.Content>
-                      <List.Header as="a">Product Name</List.Header>
-                      <List.Description>SHOE</List.Description>
-                    </List.Content>
-                    <List.Content>
-                      <List.Header as="a">Quantity Sold</List.Header>
-                      <List.Description>3</List.Description>
-                    </List.Content>
-                    <List.Content>
-                      <List.Header as="a">Sale Attendant</List.Header>
-                      <List.Description>Attendant</List.Description>
-                    </List.Content>
-                    <List.Content>
-                      <List.Header as="a">Date Sold</List.Header>
-                      <List.Description>Attendant</List.Description>
-                    </List.Content>
-                  </List.Item>
-                </List>
-              </span>
-            </div>
-          </Grid.Column>
         </Grid.Row>
       </Grid>
     );

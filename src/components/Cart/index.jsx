@@ -20,7 +20,7 @@ class allProducts extends Component {
   render() {
     const { product } = this.props.products;
     return (
-      <Grid columns={3} divided className="productslist">
+      <Grid columns={3} divided className="cartlist">
         <Label as="a" color="red" ribbon>
           Avaialable Products
         </Label>
