@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { ToastContainer } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { Link, Redirect } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Menu, Dropdown, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { setToken, isUserAuthenticated } from '../../helpers/jwt';
 import './navbar.scss';
 
 class Navbar extends Component {
@@ -12,7 +13,19 @@ class Navbar extends Component {
     cart: this.props.cart
   };
 
+  componentWillMount() {
+    const user = isUserAuthenticated();
+    if (!user) {
+      location.replace('./');
+    }
+  }
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  logout() {
+    setToken('');
+    location.replace('./');
+  }
 
   updateCart(cart) {
     this.setState({
@@ -31,10 +44,10 @@ class Navbar extends Component {
                 <Dropdown.Item as="a">ATTENDANTS</Dropdown.Item>
               </div>
             ) : null}
-            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+            <Dropdown.Item as="a" href={`${window.location.pathname}`}>
               MY PROFILE
             </Dropdown.Item>
-            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+            <Dropdown.Item as="a" onClick={this.logout}>
               LOG OUT
             </Dropdown.Item>
           </Dropdown.Menu>

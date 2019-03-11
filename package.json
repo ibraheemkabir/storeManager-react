@@ -7,7 +7,8 @@
     "test": "NODE_ENV=test jest --coverage",
     "start": "node ./server.js",
     "dev": "webpack-dev-server --config webpack/webpack.dev.js --open --hot",
-    "build": "webpack --config webpack/webpack.prod.js"
+    "build": "webpack --config webpack/webpack.prod.js",
+    "heroku-postbuild": "npm run build"
   },
   "jest": {
     "setupFilesAfterEnv": [
