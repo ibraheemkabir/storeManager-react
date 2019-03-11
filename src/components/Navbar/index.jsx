@@ -13,13 +13,6 @@ class Navbar extends Component {
     cart: this.props.cart
   };
 
-  componentWillMount() {
-    const user = isUserAuthenticated();
-    if (!user) {
-      location.replace('./');
-    }
-  }
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   updateCart(cart) {
@@ -42,10 +35,16 @@ class Navbar extends Component {
             {role === '1' ? (
               <div>
                 <Dropdown.Item as="a">ATTENDANTS</Dropdown.Item>
+                <Dropdown.Item as="a">SETTINGS</Dropdown.Item>
               </div>
             ) : null}
-            <Dropdown.Item as="a">MY PROFILE</Dropdown.Item>
-            <Dropdown.Item as="a" onClick={this.logout}>
+            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+              MY PROFILE
+            </Dropdown.Item>
+            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+              SALES RECORDS
+            </Dropdown.Item>
+            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
               LOG OUT
             </Dropdown.Item>
           </Dropdown.Menu>
@@ -66,17 +65,6 @@ class Navbar extends Component {
             name="testimonials"
             active={activeItem === 'testimonials'}
             onClick={this.handleItemClick}
-            position="left"
-            className="logo"
-          >
-            <Link replace={false} to="/dashboard">
-              STORE-MANAGER
-            </Link>
-          </Menu.Item>
-          <Menu.Item
-            name="testimonials"
-            active={activeItem === 'testimonials'}
-            onClick={this.handleItemClick}
           >
             <Link replace={false} to="/dashboard">
               My Dashboard
@@ -88,8 +76,8 @@ class Navbar extends Component {
               active={activeItem === 'testimonials'}
               onClick={this.handleItemClick}
             >
-              <Link replace={false} to="/details">
-                Product Details
+              <Link replace={false} to="/categories">
+                Categories
               </Link>
             </Menu.Item>
           ) : null}
