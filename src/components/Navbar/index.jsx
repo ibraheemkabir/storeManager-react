@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Menu, Dropdown, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { isUserAuthenticated } from '../../helpers/jwt';
 import './navbar.scss';
 
 class Navbar extends Component {
@@ -12,12 +13,24 @@ class Navbar extends Component {
     cart: this.props.cart
   };
 
+  componentWillMount() {
+    const user = isUserAuthenticated();
+    if (!user) {
+      location.replace('./');
+    }
+  }
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   updateCart(cart) {
     this.setState({
       cart
     });
+  }
+
+  logout() {
+    localStorage.removeItem('authentication');
+    location.replace('./');
   }
 
   renderDropdownMenu() {
@@ -31,10 +44,8 @@ class Navbar extends Component {
                 <Dropdown.Item as="a">ATTENDANTS</Dropdown.Item>
               </div>
             ) : null}
-            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
-              MY PROFILE
-            </Dropdown.Item>
-            <Dropdown.Item as="a" href={`${window.location.pathname}`} onClick={this.logout}>
+            <Dropdown.Item as="a">MY PROFILE</Dropdown.Item>
+            <Dropdown.Item as="a" onClick={this.logout}>
               LOG OUT
             </Dropdown.Item>
           </Dropdown.Menu>

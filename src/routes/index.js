@@ -8,16 +8,10 @@ import Details from '../pages/ProductDetails/index';
 
 export default [
   {
-    name: 'home',
-    component: Home,
-    exact: true,
-    path: '/'
-  },
-  {
     name: 'login',
     component: Login,
     exact: true,
-    path: '/auth'
+    path: '/'
   },
   {
     name: 'dashboard',

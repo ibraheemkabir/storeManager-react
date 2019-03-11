@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-const { PORT = 6000 } = process.env;
+const { PORT = 3030 } = process.env;
 
 app.use(express.static(path.join(__dirname, './dist')));
 
