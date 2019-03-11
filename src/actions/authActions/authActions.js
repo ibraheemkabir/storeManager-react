@@ -48,12 +48,14 @@ export const userLogin = user => async (dispatch) => {
   try {
     dispatch(triggerLoading(AUTH_LOADING));
     const response = await loginCall(user);
+    console.log(response.data.priviledge);
     setToken(response.data.token, response.data.priviledge, response.data.userId);
     dispatch(loginSuccess(response));
     toast.success(response.data.message);
   } catch (error) {
     if (error.response) {
       dispatch(loginFailure(error.response));
+      toast.error(error.response.data.message);
     } else {
       dispatch(networkError(networkErrorResponse));
       toast.warn(networkErrorResponse);
