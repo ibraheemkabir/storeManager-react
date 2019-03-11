@@ -1,23 +1,28 @@
 import axios from 'axios';
 import { config } from '../jwt';
 
+const gettoken = () => {
+  const token = localStorage.getItem('authentication');
+  const auth = { headers: { token } };
+  return auth;
+};
 const getAllSales = async () => {
   const response = await axios.get(
-    'https://store-maneger.herokuapp.com/api/v1/sales', config
+    'https://store-maneger.herokuapp.com/api/v1/sales', gettoken()
   );
   return response;
 };
 
 const getAllProducts = async () => {
   const response = await axios.get(
-    'https://store-maneger.herokuapp.com/api/v1/products', config
+    'https://store-maneger.herokuapp.com/api/v1/products', gettoken()
   );
   return response;
 };
 
 const getAllcategories = async () => {
   const response = await axios.get(
-    'https://store-maneger.herokuapp.com/api/v1/category', config
+    'https://store-maneger.herokuapp.com/api/v1/category', gettoken()
   );
   return response;
 };
