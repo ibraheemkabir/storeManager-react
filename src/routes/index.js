@@ -4,19 +4,14 @@ import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import Products from '../pages/Products';
 import Cart from '../pages/Cart/index';
+import Details from '../pages/ProductDetails/index';
 
 export default [
-  {
-    name: 'home',
-    component: Home,
-    exact: true,
-    path: '/'
-  },
   {
     name: 'login',
     component: Login,
     exact: true,
-    path: '/auth'
+    path: '/'
   },
   {
     name: 'dashboard',
@@ -35,6 +30,12 @@ export default [
     component: Cart,
     exact: true,
     path: '/Cart'
+  },
+  {
+    name: 'Details',
+    component: Details,
+    exact: true,
+    path: '/Details'
   },
   {
     name: '404',
