@@ -11,7 +11,7 @@ export default [
     name: 'login',
     component: Login,
     exact: true,
-    path: '/'
+    path: '/login'
   },
   {
     name: 'dashboard',
@@ -36,6 +36,12 @@ export default [
     component: Details,
     exact: true,
     path: '/Details'
+  },
+  {
+    name: 'Landing',
+    component: Home,
+    exact: true,
+    path: '/'
   },
   {
     name: '404',

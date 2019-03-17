@@ -20,7 +20,7 @@
 }
 
 .ui.menu .item {
-  padding: 0.62857143em 1.14285714em;
+  padding: 0.22857143em 1.14285714em;
 }
 .menu {
   .ui.floating.label {
@@ -35,7 +35,5 @@
 
 .ui.menu:not(.vertical) .left.item,
 .ui.menu:not(.vertical) :not(.dropdown) > .left.menu.logo {
-  font-size: 1.5rem;
-  font-weight: 1000;
-  padding-left: 1.8em;
+  border-right-style: none;
 }

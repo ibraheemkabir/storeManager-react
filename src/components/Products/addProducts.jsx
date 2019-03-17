@@ -20,6 +20,10 @@ class Products extends Component {
     this.handleImage = this.handleImage.bind(this);
   }
 
+  handleChanged = (e, data) => {
+    console.log(e.target);
+  };
+
   handleChange(event) {
     const { values } = this.state;
     const { name, value } = event.target;
@@ -80,6 +84,7 @@ class Products extends Component {
                 <Select
                   name="category"
                   onClick={this.handleChanges}
+                  onChange={this.handleChanged}
                   placeholder="Select a category"
                   options={options}
                 />

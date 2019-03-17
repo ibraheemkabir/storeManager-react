@@ -70,7 +70,7 @@ class Navbar extends Component {
             className="logo"
           >
             <Link replace={false} to="/dashboard">
-              STORE-MANAGER
+              STORELY
             </Link>
           </Menu.Item>
           <Menu.Item

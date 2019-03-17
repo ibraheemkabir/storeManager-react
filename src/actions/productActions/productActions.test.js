@@ -28,9 +28,7 @@ describe('user authentication actions Signup', () => {
     });
   });
 
-  it(`should return an action object once ${
-    actionTypes.FETCH_SALES_SUCCESS
-  } is fired`, () => {
+  it(`should return an action object once ${actionTypes.FETCH_SALES_SUCCESS} is fired`, () => {
     expect(actions.fetchSalesSuccess(fetchArticlesresponse)).toEqual({
       type: actionTypes.FETCH_SALES_SUCCESS,
       payload: fetchArticlesresponse
@@ -68,11 +66,10 @@ describe('user authentication actions login', () => {
     expect(dispatch).toBeCalledTimes(2);
   });
 
-
   it('should call the fetchsales success dispatch function', async () => {
     axios.getAllSales = jest.fn().mockResolvedValue(fetchArticlesresponse);
-    await actions.fetchSalesSuccess(dispatch);
-    expect(dispatch).toBeCalledTimes(0);
+    await actions.fetchSales()(dispatch);
+    expect(dispatch).toBeCalledTimes(2);
   });
 
   it('should throw error', async () => {
@@ -81,9 +78,18 @@ describe('user authentication actions login', () => {
     });
     try {
       await actions.fetchproducts(payload)(dispatch);
-    } catch (error) {
+    } catch (error) {}
+    expect(dispatch).toBeCalledTimes(2);
+    store.clearActions();
+  });
 
-    }
+  it('should throw error', async () => {
+    axios.getAllProducts = jest.fn(() => {
+      throw { mockResponse };
+    });
+    try {
+      await actions.fetchproducts(payload)(dispatch);
+    } catch (error) {}
     expect(dispatch).toBeCalledTimes(2);
     store.clearActions();
   });
@@ -91,6 +97,22 @@ describe('user authentication actions login', () => {
   it('should throw error', async () => {
     axios.getAllSales = jest.fn(() => {
       throw { response: mockResponse };
+    });
+    try {
+      await actions.fetchSales()(dispatch);
+    } catch (error) {
+      expect(dispatch).toBeCalledTimes(2);
+      expect(dispatch).toBeCalledWith({
+        type: actionTypes.FETCH_SALES_FAILURE,
+        payload: mockResponse
+      });
+    }
+    store.clearActions();
+  });
+
+  it('should throw error', async () => {
+    axios.getAllSales = jest.fn(() => {
+      throw { mockResponse };
     });
     try {
       await actions.fetchSales()(dispatch);

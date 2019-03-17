@@ -51,9 +51,11 @@ class index extends Component {
 
     return (
       <div className="authContainer">
+        <div className="logo">STORELY</div>
         <div className="shadow">
           <Form loading={this.props.auth.authIsLoading}>
             <Form.Field>
+              <div className="title">enter log in details.</div>
               <Input
                 placeholder="UserName"
                 name="username"
