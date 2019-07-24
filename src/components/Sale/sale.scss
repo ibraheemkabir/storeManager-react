@@ -1,0 +1,43 @@
+a.ui.big.icon.primary.right.floated.left.labeled.button {
+  background-color: transparent;
+  margin-right: 1em;
+  color: black;
+}
+
+a.ui.big.icon.primary.right.floated.left.labeled.button.total {
+  margin-right: -4em;
+}
+.ui.divided.three.column.grid.cart.productslist {
+  margin: 3em;
+}
+
+.ui.message {
+  margin: 40%;
+  position: relative;
+  min-height: 5em;
+  padding-top: 1em;
+  margin: 30%;
+  vertical-align: middle;
+  width: 100%;
+  background: #f8f8f9;
+  /* padding: 1em 1.5em; */
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, 0.87);
+  transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease,
+    box-shadow 0.1s ease;
+  border-radius: 0.28571429rem;
+  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.22) inset, 0 0 0 0 transparent;
+  text-align: center;
+}
+
+.ui.message:last-child {
+  margin-bottom: 10%;
+}
+
+.ui.message:first-child {
+  margin-top: 10%;
+}
+
+h2 {
+  cursor: pointer;
+}
