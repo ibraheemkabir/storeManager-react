@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { AddCategories, AddProducts, getAllcategories } from '../../helpers/axiosCalls/products';
+// import { AddCategories, AddProducts, getAllcategories } from '../../helpers/axiosCalls/products';
 import actionTypes from './actionTypes';
 import triggerLoading from '../authActions/loading';
 import networkError from '../networkError/networkErrorAction';
@@ -66,8 +66,8 @@ export const fetchCategories = () => async (dispatch) => {
 export const addProducts = details => async (dispatch) => {
   try {
     dispatch(triggerLoading(ADD_PRODUCTS_LOADING));
-    const response = await AddProducts(details);
-    dispatch(addproductsSuccess(response));
+    // const response = await AddProducts(details);
+    // dispatch(addproductsSuccess(response));
   } catch (error) {
     if (error.response) {
       dispatch(addproductsFailure(error.response));
@@ -82,9 +82,9 @@ export const addProducts = details => async (dispatch) => {
 export const addCategories = details => async (dispatch) => {
   try {
     dispatch(triggerLoading(ADD_CATEGORIES_LOADING));
-    const response = await AddCategories(details);
-    dispatch(addcategoriesSuccess(response));
-    toast.info(response.data.message);
+    // const response = await AddCategories(details);
+    // dispatch(addcategoriesSuccess(response));
+    // toast.info(response.data.message);
   } catch (error) {
     if (error.response) {
       dispatch(addcategoriesFailure(error.response));

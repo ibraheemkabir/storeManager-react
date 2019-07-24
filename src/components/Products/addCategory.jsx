@@ -23,6 +23,9 @@ class addProducts extends Component {
     const { values } = this.state;
     this.props.addCategories(values);
     this.props.fetchCategories();
+    this.setState({
+      values
+    });
   }
 
   handleChange(event) {
